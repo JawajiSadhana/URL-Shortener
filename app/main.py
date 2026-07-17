@@ -9,7 +9,6 @@ from app.middleware.request_id import RequestIDMiddleware
 from app.limits import limiter
 from app.middleware.rate_limit import RateLimitMiddleware
 
-# YEH 4 LINE IMPORTANT HAI - router import
 from app.routers import shorten, redirect, admin, health, analytics, metrics
 
 setup_logging()
