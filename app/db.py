@@ -17,7 +17,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # 3. Base for models
 Base = declarative_base()
 
-# 4. Per-request dependency - FastAPI me use hoga
+# 4. Per-request dependency - FastAPI used
 def get_db():
     db: Session = SessionLocal()
     try:
@@ -25,7 +25,7 @@ def get_db():
     finally:
         db.close()
 
-# 5. Tables banane ke liye
+# 5. create tables
 def init_db():
     Base.metadata.create_all(bind=engine)
 
