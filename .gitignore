@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.pyc
+.env
+.venv/
+venv/
+ENV/
+
+# FastAPI / Uvicorn
+*.log
+
+# Database - SQLite file
+*.db
+*.sqlite3
+url_shortener.db
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jinja2 cache
+.jinja2_cache/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
