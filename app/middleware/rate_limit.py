@@ -13,7 +13,6 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         client_ip = request.client.host
         now = time.time()
         
-        # purane requests hata do 60 sec se
         self.requests[client_ip] = [t for t in self.requests[client_ip] if now - t < 60]
         
         if len(self.requests[client_ip]) >= self.requests_per_minute:
