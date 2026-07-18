@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_URL=sqlite:///./url_shortener.db
+      - BASE_URL=http://localhost:8000
+    volumes:
+      - ./:/app
+    restart: unless-stopped
