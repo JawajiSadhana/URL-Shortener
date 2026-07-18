@@ -87,21 +87,6 @@ PYTHONPATH=. python3 scripts/demo_runs.py
 
 The script uses the FastAPI TestClient and prints logs showing planner tasks, approval ids, created files, per-step token/cost estimates, and review results.
 
-## Replay UI
-
-A replay console is available in-browser once the app is running. It lists approval records and shows stored trace details.
-
-Open:
-
-```bash
-http://localhost:8000/replay
-```
-
-Or view a specific approval by id:
-
-```bash
-http://localhost:8000/replay?approval_id=<approval_id>
-```
 
 ## LangChain / OpenAI
 
@@ -115,16 +100,6 @@ curl -X POST http://localhost:8000/api/v1/agent/orchestrate_lc \
 
 If OpenAI is unavailable, the wrapper still falls back to the local orchestrator.
 
-## Replay CLI
-
-A replay CLI is available to inspect saved approval records and trace history.
-
-```bash
-PYTHONPATH=. python scripts/replay_traces.py --list
-PYTHONPATH=. python scripts/replay_traces.py --show <approval_id>
-```
-
-The replay CLI prints chronological trace events, decisions, and execution metadata for a stored approval record.
 
 ## Adding a Sample Admin Key
 
