@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Approval Replay Console</title>
+</head>
+<body>
+    <h1>Replay Console</h1>
+    <form method="get" action="/replay">
+        <label for="approval_id">Approval ID:</label>
+        <input id="approval_id" name="approval_id" value="{{ approval_id or '' }}" />
+        <button type="submit">Show</button>
+    </form>
+
+    {% if record %}
+        <h2>Approval {{ record.id }}</h2>
+        <dl>
+            <dt>State</dt><dd>{{ record.state }}</dd>
+            <dt>Base path</dt><dd>{{ record.base_path }}</dd>
+            <dt>Approver</dt><dd>{{ record.approver_id or 'N/A' }}</dd>
+            <dt>Comment</dt><dd>{{ record.approver_comment or 'N/A' }}</dd>
+            <dt>Created</dt><dd>{{ record.created_at }}</dd>
+            <dt>Updated</dt><dd>{{ record.updated_at }}</dd>
+        </dl>
+
+        <h3>Planner Tasks</h3>
+        <pre>{{ record.planner_tasks | tojson(indent=2) }}</pre>
+
+        <h3>Executor Tasks</h3>
+        <pre>{{ record.executor_tasks | tojson(indent=2) }}</pre>
+
+        <h3>Decisions</h3>
+        <pre>{{ record.decisions | tojson(indent=2) }}</pre>
+
+        <h3>Traces</h3>
+        {% if record.traces %}
+            {% for trace in record.traces %}
+                <div style="border:1px solid #ccc; padding:8px; margin-bottom:8px;">
+                    <strong>{{ trace.ts }} - {{ trace.name }} ({{ trace.type }})</strong>
+                    <div><strong>Metadata:</strong></div>
+                    <pre>{{ trace.metadata | tojson(indent=2) }}</pre>
+                    <div><strong>Result:</strong></div>
+                    <pre>{{ trace.result | tojson(indent=2) }}</pre>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No trace entries.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
